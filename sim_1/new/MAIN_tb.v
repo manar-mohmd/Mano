@@ -24,17 +24,20 @@ module MAIN_tb();
 wire [7:0] DR, AC, IR, MEM;
 wire [3:0] PC, AR;
 wire [7:0] Timer,D;
+
 wire [2:0] OUTSEQ;
-wire [2:0] sel,en;
-wire [7:0] I;
+wire [2:0] en;
+wire [7:0] Ins;
 wire J;
 wire E;
 reg CLK;
 
 MAIN mano (CLK, DR, AC, IR, MEM, PC, AR,
 Timer, D,
-OUTSEQ, sel, en,
-I,
+
+OUTSEQ,  en,
+Ins,
+
 J,
 E
 );

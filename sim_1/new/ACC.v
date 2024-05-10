@@ -26,7 +26,7 @@ module ACC(Q, INC, Data, LD, CLK, CLR);
 	input [7:0] Data;
 	input INC, LD, CLK, CLR;
 	
-	 initial Q = 0;
+	 initial Q = 8'h01;
 	
 	always @(posedge CLK)
 	begin

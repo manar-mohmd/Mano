@@ -23,8 +23,9 @@
 module ACC_ARCH (AND, ADD, LDA, COM, INC, LD, CLR, T, D, B, J);
  
  output AND, ADD, LDA, LD, CLR, COM, INC;
- input [7:0] T,D;
- input [15:0] B;
+ input [7:0] T;
+ input [7:0] D;
+ input [3:0] B;
  input J;
  
  wire r;
@@ -35,8 +36,8 @@ module ACC_ARCH (AND, ADD, LDA, COM, INC, LD, CLR, T, D, B, J);
  assign AND = D[0] & T [5]; 
  assign ADD = D[1] & T[5];
  assign LDA  = D[2] & T[5];
- assign COM = B[9] & r;
- assign INC = B[5] & r;
- assign CLR = B[11] & r;
+ assign COM = B[3] & r;
+ assign INC = B[2] & r;
+ assign CLR = B[1] & r;
  assign LD = (AND | ADD | LDA | COM);
  endmodule

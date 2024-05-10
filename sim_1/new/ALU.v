@@ -20,18 +20,18 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ALU(AND, ADD, LDA, COM,E, cout, AC, DR, ACDATA);
+module ALU(AND, ADD, LDA, COM,E, AC, DR,CARRY, ACDATA);
     input AND, ADD, LDA, COM, E;  //instructions signals 
     input [7:0] AC, DR;
     
-    output cout ;
+    output CARRY ;
     output [7:0]  ACDATA;   
     wire [7:0] and8, add8, lda8, com8;   // turning the instructions signals into 16-bit signal to be anded 
     wire [7:0] AND1, AND2, AND3, AND4, SUM;         //AND gate of each instruction 
     wire CARRY;
-    
+    wire cout;
     //AND OPERATION
-    assign and8 = (AND ? 16'hff :16'b0);
+    assign and8 = (AND ? 8'hff :8'b0);
 	assign AND1 = AC & and8 & DR;
 	
 	//ADD OPERTION , {CARRY,SUM} is the result of a full-adder

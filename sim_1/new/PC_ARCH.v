@@ -22,7 +22,8 @@
 
 module PC_ARCH ( INC, LD, CLR, D, T);
 output  LD, INC, CLR;
-input [7:0] T, D;
+input [7:0]  D;
+input [7:0] T;
 
  assign LD = D[4] & T [4];
  assign INC = T[1];

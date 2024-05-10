@@ -21,7 +21,8 @@
 
 
 module SEQ_ARCH (CLR, INC, T, D);
-input [7:0] T, D;
+input [7:0] T;
+input [7:0] D;
 output CLR, INC;
 wire   x1, x2, y1, y2;
 assign x1= T[5];

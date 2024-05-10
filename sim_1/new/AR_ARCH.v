@@ -22,12 +22,13 @@
 
 module AR_ARCH(LD, CLR, INC, T, D, J);
 input J;
-input [7:0] D, T;
+input [7:0] T;
+input [7:0] D;
 output LD, CLR, INC;
 wire D7n;
 wire a1, a2, a3;
 assign D7n = ~D[7];
-assign a1 =  T[1];
+assign a1 =  T[0];
 assign a2 = D7n & J & T[3];
 assign a3 = T[2]; 
 assign LD = a1 | a2 | a3;

@@ -21,7 +21,8 @@
 
 
 module DR_ARCH(LD, CLR, INC, T, D);
-input [7:0] D, T;
+input [7:0] T;
+input [7:0] D;
 output LD, CLR, INC;
 wire d;
 assign d = D[0] & D[1] & D[2];

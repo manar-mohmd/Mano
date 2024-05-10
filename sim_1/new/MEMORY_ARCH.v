@@ -38,5 +38,5 @@ module MEMORY_ARCH ( READ, WRITE, T, D, J);
 	assign M4= M3 & T[4];
 	
 	assign READ = M1 | M2 | M4;
-    assign WRITE =0;
+    
 endmodule

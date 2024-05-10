@@ -24,7 +24,7 @@ module CONTROL_UNIT (CLK, T, AC, IR,
 CLRSEQ, INCSEQ, LDAR, CLRAR, INCAR,
  INCPC, LDPC, CLRPC, LDDR, CLRDR, INCDR,
 AND, ADD, LDA, COM, INCAC, LDAC, CLRAC,
-LDIR, CLRIR, INCIR, READ, WRITE, E, I, J, D); 
+LDIR, CLRIR, INCIR, READ, WRITE, E, Ins, J, D); 
 
 input CLK;
 	input [7:0] AC, IR;
@@ -38,19 +38,20 @@ input CLK;
            COM, LDA, ADD, AND,
            CLRSEQ, INCSEQ, 
            E,J;
-    output [7:0] I;
+    output [7:0] Ins;
     wire [7:0] D;
         wire [3:0] B = IR [3:0];
-        wire [2:0] OPCODE = IR [6:4];
+        wire [2:0] CODE = IR [6:4];
         wire J = IR[7];
         wire r;
         wire Jn;
         assign Jn = ~J;
         assign r = D[7] & T [3] & Jn;
+        
                      
                   //// DECODER   
                      
-          Decoder3to8 decode( OPCODE, D[7:0]);         /// I,O   
+          Decoder3to8 decode( CODE, D[7:0]);         /// I,O   
           
           ///////// AR CONTROL
           AR_ARCH ar(LDAR, CLRAR, INCAR, T, D, J);
@@ -73,7 +74,7 @@ input CLK;
                    SEQ_ARCH seq(CLRSEQ, INCSEQ, T, D);
                    
                    ///////////////// BUS CONTROL  
-                  BUS_ARCH bus(I, D, T, J);  
+                  BUS_ARCH bus(Ins, D, T, J);  
                              
                             
                

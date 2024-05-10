@@ -21,7 +21,8 @@
 
 
 module IR_ARCH(LD, CLR, INC, T, D);
- input [7:0] D, T;
+ input [7:0]  T;
+ input [7:0] D;
  output LD, CLR, INC;
  assign LD = T[1];
  assign CLR =0;
